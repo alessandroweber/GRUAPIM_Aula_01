@@ -1,0 +1,52 @@
+import java.lang.annotation.*;
+import java.lang.reflect.Method;
+
+// 1. Definição da Anotação
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@interface Teste {}
+
+// 2. Classe de Teste
+class MinhaClasseDeTeste {
+    @Teste
+    public void testeSoma() {
+        System.out.println("Executando testeSoma: SUCESSO");
+    }
+
+    public void metodoComum() {
+        System.out.println("Este não é um teste.");
+    }
+
+    @Teste
+    public void testeLogin() {
+        System.out.println("Executando testeLogin: SUCESSO");
+    }
+}
+
+// 3. Executor de Testes
+class ExecutorDeTestes {
+    public static void executarTestes(Object obj) {
+        Method[] metodos = obj.getClass().getDeclaredMethods();
+        int totalTestes = 0;
+
+        System.out.println("Iniciando Runner de Testes...\n");
+
+        for (Method m : metodos) {
+            if (m.isAnnotationPresent(Teste.class)) {
+                try {
+                    m.invoke(obj);
+                    totalTestes++;
+                } catch (Exception e) {
+                    System.out.println("Erro ao executar: " + m.getName());
+                }
+            }
+        }
+        System.out.println("\nTotal de testes executados: " + totalTestes);
+    }
+}
+
+public class MainTestes {
+    public static void main(String[] args) {
+        ExecutorDeTestes.executarTestes(new MinhaClasseDeTeste());
+    }
+}
