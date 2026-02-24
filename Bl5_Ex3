@@ -1,0 +1,22 @@
+import java.util.HashMap;
+
+public class AgendaContatos {
+    public static void main(String[] args) {
+        HashMap<String, String> agenda = new HashMap<>();
+
+        // Adicionando contatos
+        agenda.put("Bráulio", "11-99999-8888");
+        agenda.put("Maria", "11-77777-6666");
+
+        // Verificando existência (Exercício 6)
+        String nomeBusca = "Bráulio";
+        String telBusca = "11-00000-0000";
+
+        System.out.println("Existe o contato '" + nomeBusca + "'? " + agenda.containsKey(nomeBusca));
+        System.out.println("Existe o telefone '" + telBusca + "'? " + agenda.containsValue(telBusca));
+
+        // Listando tudo
+        System.out.println("\n--- Lista de Contatos ---");
+        agenda.forEach((nome, tel) -> System.out.println(nome + ": " + tel));
+    }
+}
