@@ -1,0 +1,28 @@
+public class SistemaLanchonete {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Pedido pedido = new Pedido("Bráulio");
+
+        // Criando itens
+        Produto p1 = new Pizza("Calabresa", 45.0, 0.8, LocalDate.now().plusDays(2), "Calabresa", "Catupiry", "Tomate");
+        Produto s1 = new Salgadinho("Coxinha", 5.0, 0.15, LocalDate.now().plusDays(1), "Frito", "Trigo", "Frango");
+
+        pedido.adicionarItem(p1);
+        pedido.adicionarItem(s1);
+
+        // Nota Fiscal
+        pedido.gerarNotaFiscal();
+
+        // Pagamento e Troco
+        double total = pedido.calcularTotal();
+        System.out.print("Valor recebido em dinheiro: R$ ");
+        double pago = sc.nextDouble();
+
+        if (pago >= total) {
+            System.out.printf("Troco do cliente: R$ %.2f\n", (pago - total));
+        } else {
+            System.out.println("Valor insuficiente.");
+        }
+        sc.close();
+    }
+}
