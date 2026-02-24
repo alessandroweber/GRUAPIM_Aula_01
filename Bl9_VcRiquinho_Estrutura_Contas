@@ -1,0 +1,51 @@
+abstract class Conta {
+    protected double saldo;
+    public Conta(double saldo) { this.saldo = saldo; }
+    public abstract double simularRendimento(int dias, Cliente dono);
+    public abstract double calcularTaxaServico(double rendimento, Cliente dono);
+}
+
+class ContaCDI extends Conta {
+    private static final double CDI_DIARIO = 0.12 / 360; // Exemplo 12% aa
+
+    public ContaCDI(double saldo) { super(saldo); }
+
+    @Override
+    public double simularRendimento(int dias, Cliente dono) {
+        return saldo * (CDI_DIARIO / 30 * dias);
+    }
+
+    @Override
+    public double calcularTaxaServico(double rendimento, Cliente dono) {
+        return rendimento * 0.0007; // 0.07%
+    }
+}
+
+class ContaInvestimentoAutomatico extends Conta {
+    private List<ProdutoFinanceiro> produtos;
+
+    public ContaInvestimentoAutomatico(double saldo, List<ProdutoFinanceiro> produtos) {
+        super(saldo);
+        this.produtos = produtos;
+    }
+
+    @Override
+    public double simularRendimento(int dias, Cliente dono) {
+        double rendimentoTotal = 0;
+        for (ProdutoFinanceiro p : produtos) {
+            double parcela = saldo / produtos.size();
+            double rend = p.calcularRendimento(parcela, dias);
+            if (rend == 0 && p instanceof RendaFixa) {
+                System.out.println("[AVISO] Produto " + p.getNome() + " está em carência.");
+            }
+            rendimentoTotal += rend;
+        }
+        return rendimentoTotal;
+    }
+
+    @Override
+    public double calcularTaxaServico(double rendimento, Cliente dono) {
+        double taxa = (dono instanceof PessoaFisica) ? 0.001 : 0.0015;
+        return rendimento * taxa;
+    }
+}
