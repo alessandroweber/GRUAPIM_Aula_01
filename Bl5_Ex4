@@ -1,0 +1,15 @@
+import java.util.LinkedHashMap;
+
+public class OrdemCadastro {
+    public static void main(String[] args) {
+        LinkedHashMap<Integer, String> produtos = new LinkedHashMap<>();
+        produtos.put(50, "Notebook");
+        produtos.put(10, "Mouse");
+        produtos.put(80, "Teclado");
+        produtos.put(5, "Monitor");
+        produtos.put(100, "Cadeira Gamer");
+
+        System.out.println("Produtos (Ordem de Inserção):");
+        produtos.forEach((id, nome) -> System.out.println("ID: " + id + " | Produto: " + nome));
+    }
+}
