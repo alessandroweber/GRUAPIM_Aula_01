@@ -1,0 +1,18 @@
+import java.util.TreeSet;
+
+public class OrdemAlfabetica {
+    public static void main(String[] args) {
+        TreeSet<String> nomes = new TreeSet<>();
+
+        nomes.add("Zuleica");
+        nomes.add("Ana");
+        nomes.add("Pedro");
+        nomes.add("Beatriz");
+        nomes.add("Caio");
+
+        System.out.println("Nomes em ordem alfabética:");
+        for (String nome : nomes) {
+            System.out.println(nome);
+        }
+    }
+}
