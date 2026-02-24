@@ -1,0 +1,26 @@
+class Pedido {
+    private String nomeCliente;
+    private List<Produto> itens = new ArrayList<>();
+    private final double TAXA_SERVICO = 0.10; // 10%
+
+    public Pedido(String nomeCliente) { this.nomeCliente = nomeCliente; }
+
+    public void adicionarItem(Produto p) { itens.add(p); }
+
+    public double calcularTotal() {
+        double subtotal = itens.stream().mapToDouble(Produto::getPreco).sum();
+        return subtotal + (subtotal * TAXA_SERVICO);
+    }
+
+    public void gerarNotaFiscal() {
+        System.out.println("\n========== QUASE TRÊS LANCHES ==========");
+        System.out.println("Cliente: " + nomeCliente);
+        System.out.println("----------------------------------------");
+        for (Produto p : itens) {
+            System.out.printf("%-30s R$ %.2f\n", p.getDescricao(), p.getPreco());
+        }
+        System.out.println("----------------------------------------");
+        System.out.printf("TOTAL (com 10%% taxa): R$ %.2f\n", calcularTotal());
+        System.out.println("========================================\n");
+    }
+}
