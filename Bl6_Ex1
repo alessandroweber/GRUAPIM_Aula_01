@@ -1,0 +1,25 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class FilaImpressao {
+    public static void main(String[] args) {
+        Queue<String> fila = new LinkedList<>();
+
+        // Adicionando documentos na fila
+        fila.add("Relatorio_Financeiro.pdf");
+        fila.add("Foto_Viagem.png");
+        fila.add("TCC_Versao_Final.docx");
+        fila.add("Contrato_Aluguel.pdf");
+        fila.add("Planilha_Gastos.xlsx");
+
+        System.out.println("Iniciando processamento da fila...\n");
+
+        while (!fila.isEmpty()) {
+            // poll() remove e retorna o primeiro elemento
+            String documentoAtual = fila.poll();
+            System.out.println("Imprimindo: " + documentoAtual);
+        }
+
+        System.out.println("\nFila vazia. Todos os documentos foram impressos.");
+    }
+}
