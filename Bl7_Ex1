@@ -1,0 +1,38 @@
+import java.util.*;
+
+class Produto {
+    String nome;
+    double preco;
+
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    @Override
+    public String toString() { return nome + " (R$ " + preco + ")"; }
+}
+
+public class CatalogoProdutos {
+    public static void main(String[] args) {
+        Map<String, List<Produto>> catalogo = new HashMap<>();
+
+        // Populando categorias
+        catalogo.put("Eletrônicos", new ArrayList<>(Arrays.asList(
+            new Produto("Smartphone", 2500.0), 
+            new Produto("Notebook", 4500.0)
+        )));
+        
+        catalogo.put("Livros", new ArrayList<>(Arrays.asList(
+            new Produto("Java Efetivo", 120.0), 
+            new Produto("Clean Code", 95.0)
+        )));
+
+        // Listando produtos de uma categoria específica
+        String categoriaBusca = "Eletrônicos";
+        System.out.println("--- Produtos em " + categoriaBusca + " ---");
+        if (catalogo.containsKey(categoriaBusca)) {
+            catalogo.get(categoriaBusca).forEach(System.out::println);
+        }
+    }
+}
