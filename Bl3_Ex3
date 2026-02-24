@@ -1,0 +1,25 @@
+import java.util.LinkedList;
+
+public class FilaAtendimento {
+    public static void main(String[] args) {
+        LinkedList<String> fila = new LinkedList<>();
+
+        // 1. Adicionar 5 clientes no final
+        fila.addLast("João");
+        fila.addLast("Maria");
+        fila.addLast("Pedro");
+        fila.addLast("Ana");
+        fila.addLast("Lucas");
+        System.out.println("Fila inicial: " + fila);
+
+        // 2. Atender os 2 primeiros (remover do início)
+        System.out.println("Atendendo: " + fila.removeFirst());
+        System.out.println("Atendendo: " + fila.removeFirst());
+
+        // 3. Adicionar 2 prioritários no início
+        fila.addFirst("Sr. José (Prioritário)");
+        fila.addFirst("Dona Rosa (Prioritário)");
+
+        System.out.println("Ordem final da fila: " + fila);
+    }
+}
