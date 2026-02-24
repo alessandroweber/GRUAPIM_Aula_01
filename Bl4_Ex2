@@ -1,0 +1,14 @@
+import java.util.HashSet;
+
+public class UnicidadeEmail {
+    public static void main(String[] args) {
+        HashSet<String> emails = new HashSet<>();
+
+        emails.add("braulio@email.com");
+        emails.add("contato@java.org");
+        emails.add("braulio@email.com"); // Tentativa de duplicata
+
+        System.out.println("E-mails cadastrados: " + emails);
+        System.out.println("Tamanho do Set: " + emails.size()); // Exibirá 2
+    }
+}
