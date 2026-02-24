@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Aluno {
+    String nome;
+    double nota;
+
+    public Aluno(String nome, double nota) {
+        this.nome = nome;
+        this.nota = nota;
+    }
+    @Override
+    public String toString() { return nome + " (" + nota + ")"; }
+}
+
+public class AgrupaAlunos {
+    public static void main(String[] args) {
+        List<Aluno> listaAlunos = Arrays.asList(
+            new Aluno("Ana", 8.5), new Aluno("Beto", 4.0), 
+            new Aluno("Carla", 6.0), new Aluno("Dani", 9.0)
+        );
+
+        Map<String, List<Aluno>> grupos = new HashMap<>();
+        grupos.put("Aprovados", new ArrayList<>());
+        grupos.put("Recuperação", new ArrayList<>());
+        grupos.put("Reprovados", new ArrayList<>());
+
+        for (Aluno a : listaAlunos) {
+            if (a.nota >= 7) grupos.get("Aprovados").add(a);
+            else if (a.nota >= 5) grupos.get("Recuperação").add(a);
+            else grupos.get("Reprovados").add(a);
+        }
+
+        grupos.forEach((status, alunos) -> {
+            System.out.println(status + ": " + alunos);
+        });
+    }
+}
