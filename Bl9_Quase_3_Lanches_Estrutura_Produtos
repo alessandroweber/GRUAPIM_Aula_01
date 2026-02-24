@@ -1,0 +1,63 @@
+import java.util.*;
+import java.time.LocalDate;
+
+// Classe Base
+abstract class Produto {
+    protected String nome;
+    protected double preco;
+    protected double peso;
+    protected LocalDate dataValidade;
+
+    public Produto(String nome, double preco, double peso, LocalDate validade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.peso = peso;
+        this.dataValidade = validade;
+    }
+
+    public abstract String getDescricao();
+    public double getPreco() { return preco; }
+}
+
+// Subclasses Específicas
+class Pizza extends Produto {
+    private String recheio, borda, molho;
+
+    public Pizza(String nome, double preco, double peso, LocalDate val, String r, String b, String m) {
+        super(nome, preco, peso, val);
+        this.recheio = r; this.borda = b; this.molho = m;
+    }
+
+    @Override
+    public String getDescricao() {
+        return String.format("Pizza %s (Recheio: %s, Borda: %s, Molho: %s)", nome, recheio, borda, molho);
+    }
+}
+
+class Lanche extends Produto {
+    private String pao, recheio, molho;
+
+    public Lanche(String nome, double preco, double peso, LocalDate val, String p, String r, String m) {
+        super(nome, preco, peso, val);
+        this.pao = p; this.recheio = r; this.molho = m;
+    }
+
+    @Override
+    public String getDescricao() {
+        return String.format("Lanche %s (Pão: %s, Recheio: %s, Molho: %s)", nome, pao, recheio, molho);
+    }
+}
+
+class Salgadinho extends Produto {
+    private String tipo, massa, recheio; // tipo: frito ou assado
+
+    public Salgadinho(String nome, double preco, double peso, LocalDate val, String t, String m, String r) {
+        super(nome, preco, peso, val);
+        this.tipo = t; this.massa = m; this.recheio = r;
+    }
+
+    @Override
+    public String getDescricao() {
+        return String.format("Salgadinho %s (%s, Massa: %s, Recheio: %s)", nome, tipo, massa, recheio);
+    }
+}
