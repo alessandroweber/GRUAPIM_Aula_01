@@ -1,0 +1,8 @@
+Justificativa do Design
+Polimorfismo no Rendimento: Ao usar o método simularRendimento na classe abstrata Conta, o simulador principal não precisa saber se a conta é CDI ou Automática. Ele apenas chama o método e cada conta aplica sua regra.
+
+Tratamento de Carência: A lógica foi inserida dentro da classe RendaFixa. Isso respeita o Princípio da Responsabilidade Única, onde o próprio produto sabe se pode ou não render em determinado período.
+
+Diferenciação PF/PJ: Usei o operador instanceof dentro da ContaInvestimentoAutomatico para decidir a taxa de serviço. Isso permite que a conta se comporte de forma inteligente dependendo de quem é o dono.
+
+Interface de Lista (Collections): Utilize List<Conta> para permitir que um cliente tenha múltiplas contas, conforme exigido no requisito.
