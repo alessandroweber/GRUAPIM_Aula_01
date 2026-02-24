@@ -1,0 +1,41 @@
+import java.util.*;
+
+// --- PRODUTOS DE INVESTIMENTO ---
+abstract class ProdutoFinanceiro {
+    protected String nome;
+    protected double rendimentoMensal;
+
+    public ProdutoFinanceiro(String nome, double rendimento) {
+        this.nome = nome;
+        this.rendimentoMensal = rendimento;
+    }
+    public abstract double calcularRendimento(double valor, int dias);
+    public String getNome() { return nome; }
+}
+
+class RendaFixa extends ProdutoFinanceiro {
+    private int carenciaDias;
+
+    public RendaFixa(String nome, double rendimento, int carencia) {
+        super(nome, rendimento);
+        this.carenciaDias = carencia;
+    }
+
+    @Override
+    public double calcularRendimento(double valor, int dias) {
+        if (dias < carenciaDias) return 0; // Regra de Carência
+        return valor * (rendimentoMensal / 30 * dias);
+    }
+    public int getCarencia() { return carenciaDias; }
+}
+
+class RendaVariavel extends ProdutoFinanceiro {
+    public RendaVariavel(String nome, double rendimentoEsperado) {
+        super(nome, rendimentoEsperado);
+    }
+
+    @Override
+    public double calcularRendimento(double valor, int dias) {
+        return valor * (rendimentoMensal / 30 * dias);
+    }
+}
