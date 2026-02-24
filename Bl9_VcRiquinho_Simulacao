@@ -1,0 +1,21 @@
+public class SistemaVcRiquinho {
+    public static void main(String[] args) {
+        // Mock de Produtos
+        ProdutoFinanceiro cdb = new RendaFixa("CDB Itaú", 0.01, 60);
+        ProdutoFinanceiro acao = new RendaVariavel("PETR4", 0.02);
+
+        // Mock de Cliente e Conta
+        PessoaFisica braulio = new PessoaFisica("Bráulio", "braulio@milan.it", "123.456.789-00");
+        Conta contaAuto = new ContaInvestimentoAutomatico(10000.0, Arrays.asList(cdb, acao));
+        braulio.adicionarConta(contaAuto);
+
+        // Simulação de 30 dias (deve avisar carência do CDB)
+        int periodo = 30;
+        for (Conta c : braulio.getContas()) {
+            double rend = c.simularRendimento(periodo, braulio);
+            double taxa = c.calcularTaxaServico(rend, braulio);
+            System.out.printf("Rendimento em %d dias: R$ %.2f | Taxa VcRiquinho: R$ %.2f\n", 
+                               periodo, rend, taxa);
+        }
+    }
+}
