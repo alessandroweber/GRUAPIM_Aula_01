@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class SorteioUnico {
+    public static void main(String[] args) {
+        List<String> participantes = Arrays.asList("Ana", "Pedro", "Ana", "Beto", "Carla", "Beto", "Zeca");
+
+        // 1. Garantir unicidade usando Set
+        Set<String> nomesUnicos = new HashSet<>(participantes);
+        List<String> listaParaSorteio = new ArrayList<>(nomesUnicos);
+
+        // 2. Sortear 3 ganhadores
+        Collections.shuffle(listaParaSorteio);
+
+        System.out.println("Ganhadores:");
+        for (int i = 0; i < Math.min(3, listaParaSorteio.size()); i++) {
+            System.out.println((i + 1) + "º Lugar: " + listaParaSorteio.get(i));
+        }
+    }
+}
