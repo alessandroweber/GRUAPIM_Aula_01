@@ -1,0 +1,30 @@
+public class Circulo {
+    private double raio;
+
+    public Circulo(double raio) {
+        setRaio(raio);
+    }
+
+    public double getRaio() {
+        return raio;
+    }
+
+    public void setRaio(double raio) {
+        if (raio <= 0) {
+            throw new IllegalArgumentException("O raio deve ser maior que zero!");
+        }
+        this.raio = raio;
+    }
+
+    public double calcularArea() {
+        return Math.PI * Math.pow(raio, 2);
+    }
+
+    public static void main(String[] args) {
+        Circulo c = new Circulo(5.0);
+        System.out.println("Área do círculo: " + c.calcularArea());
+        
+        // Testando a validação:
+        // c.setRaio(-1); // Isso lançaria a exceção
+    }
+}
