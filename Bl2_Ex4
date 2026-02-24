@@ -1,0 +1,37 @@
+// 1. A Exceção Personalizada
+class SaldoInsuficienteException extends Exception {
+    public SaldoInsuficienteException(String mensagem) {
+        super(mensagem);
+    }
+}
+
+// 2. A Classe Conta
+class ContaBancaria {
+    private double saldo;
+
+    public ContaBancaria(double saldoInicial) {
+        this.saldo = saldoInicial;
+    }
+
+    public void sacar(double valor) throws SaldoInsuficienteException {
+        if (valor > saldo) {
+            throw new SaldoInsuficienteException("Erro: Saldo insuficiente para o saque de R$ " + valor);
+        }
+        saldo -= valor;
+        System.out.println("Saque realizado! Novo saldo: R$ " + saldo);
+    }
+}
+
+// 3. Classe de Teste
+public class TesteExcecao {
+    public static void main(String[] args) {
+        ContaBancaria conta = new ContaBancaria(500.0);
+
+        try {
+            conta.sacar(100.0); // Funciona
+            conta.sacar(600.0); // Lança exceção
+        } catch (SaldoInsuficienteException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
