@@ -1,0 +1,25 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class PilhaLivros {
+    public static void main(String[] args) {
+        Deque<String> pilha = new ArrayDeque<>();
+
+        // 1. Empilhar (Push) - Adiciona ao topo
+        pilha.push("O Código Da Vinci");
+        pilha.push("Clean Code");
+        pilha.push("Java: Como Programar");
+
+        System.out.println("Pilha atual: " + pilha);
+
+        // 2. Desempilhar (Pop) - Remove do topo
+        String removido = pilha.pop();
+        System.out.println("Livro removido (pop): " + removido);
+
+        // 3. Espiar (Peek) - Olha o topo sem remover
+        String topo = pilha.peek();
+        System.out.println("Livro agora no topo (peek): " + topo);
+
+        System.out.println("Pilha final: " + pilha);
+    }
+}
