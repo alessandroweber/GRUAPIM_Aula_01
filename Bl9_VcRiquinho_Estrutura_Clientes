@@ -1,0 +1,28 @@
+abstract class Cliente {
+    protected String nome;
+    protected String email;
+    protected List<Conta> contas = new ArrayList<>();
+
+    public Cliente(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
+    public void adicionarConta(Conta c) { contas.add(c); }
+    public List<Conta> getContas() { return contas; }
+}
+
+class PessoaFisica extends Cliente {
+    private String cpf;
+    public PessoaFisica(String nome, String email, String cpf) {
+        super(nome, email);
+        this.cpf = cpf;
+    }
+}
+
+class PessoaJuridica extends Cliente {
+    private String cnpj;
+    public PessoaJuridica(String nome, String email, String cnpj) {
+        super(nome, email);
+        this.cnpj = cnpj;
+    }
+}
