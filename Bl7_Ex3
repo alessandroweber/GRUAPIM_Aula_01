@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class InverteFrase {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite uma frase: ");
+        String frase = scanner.nextLine();
+        
+        String[] palavras = frase.split(" ");
+        Deque<String> pilha = new ArrayDeque<>();
+
+        for (String p : palavras) {
+            pilha.push(p);
+        }
+
+        System.out.print("Frase invertida: ");
+        while (!pilha.isEmpty()) {
+            System.out.print(pilha.pop() + " ");
+        }
+        scanner.close();
+    }
+}
