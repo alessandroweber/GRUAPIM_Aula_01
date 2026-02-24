@@ -1,0 +1,17 @@
+import java.util.TreeMap;
+
+public class NotasAlunos {
+    public static void main(String[] args) {
+        TreeMap<String, Double> notas = new TreeMap<>();
+        notas.put("Zuleica", 8.5);
+        notas.put("Ana", 9.0);
+        notas.put("Pedro", 7.5);
+        notas.put("Beatriz", 10.0);
+        notas.put("Carlos", 6.5);
+
+        System.out.println("Notas dos Alunos (Ordem Alfabética):");
+        for (String nome : notas.keySet()) {
+            System.out.println(nome + ": " + notas.get(nome));
+        }
+    }
+}
