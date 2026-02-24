@@ -1,0 +1,42 @@
+class Veiculo {
+    protected String marca;
+    protected String modelo;
+
+    public Veiculo(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
+    @Override
+    public String toString() {
+        return "Marca: " + marca + ", Modelo: " + modelo;
+    }
+}
+
+class CarroHeranca extends Veiculo {
+    private int numeroDePortas;
+
+    public CarroHeranca(String marca, String modelo, int numeroDePortas) {
+        super(marca, modelo);
+        this.numeroDePortas = numeroDePortas;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Portas: " + numeroDePortas;
+    }
+}
+
+class Moto extends Veiculo {
+    private int cilindradas;
+
+    public Moto(String marca, String modelo, int cilindradas) {
+        super(marca, modelo);
+        this.cilindradas = cilindradas;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Cilindradas: " + cilindradas + "cc";
+    }
+}
