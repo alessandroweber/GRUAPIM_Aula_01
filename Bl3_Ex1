@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ListaTarefas {
+    public static void main(String[] args) {
+        ArrayList<String> tarefas = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int opcao = 0;
+
+        while (opcao != 4) {
+            System.out.println("\n1. Adicionar | 2. Remover | 3. Listar | 4. Sair");
+            System.out.print("Escolha: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar buffer
+
+            switch (opcao) {
+                case 1 -> {
+                    System.out.print("Tarefa: ");
+                    tarefas.add(scanner.nextLine());
+                }
+                case 2 -> {
+                    System.out.print("Índice para remover: ");
+                    int idx = scanner.nextInt();
+                    if (idx >= 0 && idx < tarefas.size()) tarefas.remove(idx);
+                }
+                case 3 -> {
+                    System.out.println("--- Suas Tarefas ---");
+                    for (int i = 0; i < tarefas.size(); i++) {
+                        System.out.println(i + " - " + tarefas.get(i));
+                    }
+                }
+            }
+        }
+        scanner.close();
+    }
+}
