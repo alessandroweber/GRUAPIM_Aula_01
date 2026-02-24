@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
+public class RemovedorDuplicatas {
+    public static void main(String[] args) {
+        List<Integer> listaComDuplicatas = Arrays.asList(1, 2, 2, 3, 4, 4, 5, 1);
+        System.out.println("Lista Original: " + listaComDuplicatas);
+
+        // Convertendo para HashSet para remover duplicatas
+        HashSet<Integer> semDuplicatas = new HashSet<>(listaComDuplicatas);
+
+        System.out.println("Coleção Sem Duplicatas: " + semDuplicatas);
+    }
+}
