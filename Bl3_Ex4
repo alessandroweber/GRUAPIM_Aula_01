@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BuscaCidades {
+    public static void main(String[] args) {
+        ArrayList<String> cidades = new ArrayList<>();
+        cidades.add("São Paulo");
+        cidades.add("Milão");
+        cidades.add("Berlim");
+        cidades.add("Londres");
+        cidades.add("Tóquio");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o nome da cidade para buscar: ");
+        String busca = scanner.nextLine();
+
+        if (cidades.contains(busca)) {
+            int indice = cidades.indexOf(busca);
+            System.out.println("Cidade encontrada! Está na posição (índice): " + indice);
+        } else {
+            System.out.println("A cidade '" + busca + "' não está na lista.");
+        }
+
+        scanner.close();
+    }
+}
