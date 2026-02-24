@@ -1,0 +1,24 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class DicionarioSimples {
+    public static void main(String[] args) {
+        HashMap<String, String> dicionario = new HashMap<>();
+        dicionario.put("cachorro", "dog");
+        dicionario.put("gato", "cat");
+        dicionario.put("livro", "book");
+        dicionario.put("janela", "window");
+        dicionario.put("computador", "computer");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite uma palavra em português: ");
+        String palavra = scanner.nextLine().toLowerCase();
+
+        if (dicionario.containsKey(palavra)) {
+            System.out.println("Tradução: " + dicionario.get(palavra));
+        } else {
+            System.out.println("Palavra não encontrada no dicionário.");
+        }
+        scanner.close();
+    }
+}
